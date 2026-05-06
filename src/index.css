@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .text-neon {
+    color: #39FF14;
+  }
+
+  .neon-glow {
+    text-shadow: 0 0 10px rgba(57,255,20,0.8), 0 0 20px rgba(57,255,20,0.4);
+  }
+
+  .btn-neon {
+    background-color: #39FF14;
+    color: #0A0A0A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(57,255,20,0.4);
+  }
+
+  .btn-neon:hover {
+    background-color: #2acc0f;
+    box-shadow: 0 0 30px rgba(57,255,20,0.7), 0 0 60px rgba(57,255,20,0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-neon {
+    border: 2px solid #39FF14;
+    color: #39FF14;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-neon:hover {
+    background-color: #39FF14;
+    color: #0A0A0A;
+    box-shadow: 0 0 20px rgba(57,255,20,0.5);
+    transform: translateY(-2px);
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+
+  .card-dark {
+    background-color: #1A1A1A;
+    border: 1px solid #2A2A2A;
+    transition: all 0.3s ease;
+  }
+
+  .card-dark:hover {
+    border-color: rgba(57,255,20,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(57,255,20,0.1);
+    transform: translateY(-4px);
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-on-scroll-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-on-scroll-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-on-scroll-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #39FF14, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(10,10,10,0.92) 0%,
+      rgba(10,10,10,0.75) 50%,
+      rgba(57,255,20,0.08) 100%
+    );
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #39FF14;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2acc0f;
+}
+
+/* WhatsApp button pulse */
+@keyframes whatsapp-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2s infinite;
+}
+
+/* Gallery hover */
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-item img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Testimonial slider */
+.testimonial-slide {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Navbar glass */
+.navbar-glass {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+}
