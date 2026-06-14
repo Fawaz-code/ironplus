@@ -67,23 +67,23 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="py-24 bg-brand-black relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-brand-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(57,255,20,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <p className="font-poppins text-xs font-500 text-brand-green tracking-[0.3em] uppercase mb-4 animate-on-scroll">
             Member Stories
           </p>
-          <h2 className="section-title text-4xl sm:text-5xl text-white animate-on-scroll stagger-1">
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl text-white animate-on-scroll stagger-1">
             Real Results. <span className="text-neon">Real People.</span>
           </h2>
         </div>
 
         {/* Testimonial card */}
         <div
-          className={`bg-brand-dark-card border border-brand-dark-border rounded-sm p-8 lg:p-12 relative transition-opacity duration-300 ${
+          className={`bg-brand-dark-card border border-brand-dark-border rounded-sm p-5 sm:p-8 lg:p-12 relative transition-opacity duration-300 ${
             isAnimating ? 'opacity-0' : 'opacity-100'
           } animate-on-scroll`}
         >
@@ -111,8 +111,8 @@ export default function Testimonials() {
             </div>
 
             {/* Quote */}
-            <blockquote className="flex-1">
-              <p className="font-poppins text-white/75 text-lg leading-relaxed italic">
+            <blockquote className="flex-1 mt-4 lg:mt-0">
+              <p className="font-poppins text-white/75 text-base sm:text-lg leading-relaxed italic">
                 "{t.text}"
               </p>
             </blockquote>

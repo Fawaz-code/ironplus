@@ -4,7 +4,7 @@ const images = [
   {
     src: 'https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800',
     label: 'Main Training Floor',
-    size: 'col-span-2 row-span-2',
+    size: 'col-span-2 row-span-2 md:col-span-2 md:row-span-2',
   },
   {
     src: 'https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=600',
@@ -29,20 +29,20 @@ const images = [
   {
     src: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=800',
     label: 'Group Fitness Studio',
-    size: 'col-span-2',
+    size: 'col-span-2 md:col-span-2',
   },
 ];
 
 export default function Gallery() {
   return (
-    <section className="py-24 bg-brand-dark relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-brand-dark relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <p className="font-poppins text-xs font-500 text-brand-green tracking-[0.3em] uppercase mb-4 animate-on-scroll">
             The Space
           </p>
-          <h2 className="section-title text-4xl sm:text-5xl text-white animate-on-scroll stagger-1">
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl text-white animate-on-scroll stagger-1">
             World-Class <span className="text-neon">Facility</span>
           </h2>
           <p className="font-poppins text-white/55 max-w-xl mx-auto mt-4 text-base animate-on-scroll stagger-2">
@@ -51,7 +51,7 @@ export default function Gallery() {
         </div>
 
         {/* Mosaic grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[220px] animate-on-scroll">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 auto-rows-[160px] sm:auto-rows-[200px] md:auto-rows-[220px] animate-on-scroll">
           {images.map((img, i) => (
             <div
               key={i}

@@ -58,16 +58,16 @@ export default function Programs() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section id="programs" className="py-24 bg-brand-dark relative overflow-hidden">
+    <section id="programs" className="py-16 sm:py-24 bg-brand-dark relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <p className="font-poppins text-xs font-500 text-brand-green tracking-[0.3em] uppercase mb-4 animate-on-scroll">
             What We Offer
           </p>
-          <h2 className="section-title text-4xl sm:text-5xl text-white mb-5 animate-on-scroll stagger-1">
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl text-white mb-5 animate-on-scroll stagger-1">
             World-Class <span className="text-neon">Programs</span>
           </h2>
           <p className="font-poppins text-white/55 max-w-xl mx-auto text-base leading-relaxed animate-on-scroll stagger-2">
@@ -100,7 +100,7 @@ export default function Programs() {
               </div>
 
               {/* Body */}
-              <div className="bg-brand-dark-card border border-brand-dark-border border-t-0 p-5 transition-all duration-300 group-hover:border-brand-green/30">
+              <div className="bg-brand-dark-card border border-brand-dark-border border-t-0 p-4 sm:p-5 transition-all duration-300 group-hover:border-brand-green/30">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-montserrat font-800 text-lg text-white">{prog.title}</h3>
                   <div className="w-8 h-8 bg-brand-black rounded flex items-center justify-center flex-shrink-0 ml-2">

@@ -59,17 +59,17 @@ const WA_LINK =
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-brand-dark relative overflow-hidden">
+    <section id="pricing" className="py-16 sm:py-24 bg-brand-dark relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brand-green/20 to-transparent" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <p className="font-poppins text-xs font-500 text-brand-green tracking-[0.3em] uppercase mb-4 animate-on-scroll">
             Membership Plans
           </p>
-          <h2 className="section-title text-4xl sm:text-5xl text-white mb-5 animate-on-scroll stagger-1">
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl text-white mb-5 animate-on-scroll stagger-1">
             Simple, <span className="text-neon">Transparent</span> Pricing
           </h2>
           <p className="font-poppins text-white/55 max-w-xl mx-auto text-base animate-on-scroll stagger-2">
@@ -77,7 +77,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch">
           {plans.map((plan, i) => (
             <div
               key={plan.name}
@@ -89,15 +89,15 @@ export default function Pricing() {
             >
               {/* Popular badge */}
               {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-green px-5 py-1.5 rounded-full flex items-center gap-1.5 shadow-neon-sm">
-                  <Star size={12} fill="currentColor" className="text-brand-black" />
-                  <span className="font-montserrat font-800 text-[11px] text-brand-black tracking-widest uppercase">
+                <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 bg-brand-green px-3 sm:px-5 py-1 sm:py-1.5 rounded-full flex items-center gap-1.5 shadow-neon-sm whitespace-nowrap">
+                  <Star size={10} fill="currentColor" className="text-brand-black sm:w-3 sm:h-3" />
+                  <span className="font-montserrat font-800 text-[9px] sm:text-[11px] text-brand-black tracking-widest uppercase">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="p-6 lg:p-8 flex flex-col flex-1">
+              <div className="p-5 sm:p-6 lg:p-8 flex flex-col flex-1">
                 {/* Plan name */}
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-1">

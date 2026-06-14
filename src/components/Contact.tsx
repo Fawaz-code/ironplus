@@ -17,16 +17,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-brand-black relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-24 bg-brand-black relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-green/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <p className="font-poppins text-xs font-500 text-brand-green tracking-[0.3em] uppercase mb-4 animate-on-scroll">
             Get In Touch
           </p>
-          <h2 className="section-title text-4xl sm:text-5xl text-white animate-on-scroll stagger-1">
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl text-white animate-on-scroll stagger-1">
             Start Your <span className="text-neon">Journey Today</span>
           </h2>
           <p className="font-poppins text-white/55 max-w-xl mx-auto mt-4 text-base animate-on-scroll stagger-2">
@@ -69,12 +69,12 @@ export default function Contact() {
             </div>
 
             {/* Map embed placeholder */}
-            <div className="mt-8 rounded-sm overflow-hidden border border-brand-dark-border" style={{ height: '220px' }}>
+            <div className="mt-8 rounded-sm overflow-hidden border border-brand-dark-border h-[180px] sm:h-[220px]">
               <iframe
                 title="IronPulse Elite Fitness Location"
                 src="https://maps.google.com/maps?q=245+Madison+Ave,+New+York,+NY&output=embed&z=15"
                 width="100%"
-                height="220"
+                height="100%"
                 style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(0.8)' }}
                 allowFullScreen
                 loading="lazy"
@@ -85,7 +85,7 @@ export default function Contact() {
 
           {/* Right: form */}
           <div className="animate-on-scroll-right">
-            <div className="bg-brand-dark-card border border-brand-dark-border rounded-sm p-8">
+            <div className="bg-brand-dark-card border border-brand-dark-border rounded-sm p-5 sm:p-8">
               {sent ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
                   <CheckCircle size={56} className="text-brand-green mb-4" />

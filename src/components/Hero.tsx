@@ -38,29 +38,29 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="section-title text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] mb-6 animate-on-scroll stagger-1">
+        <h1 className="section-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.1] mb-6 animate-on-scroll stagger-1">
           Transform Your Body
           <br />
           <span className="text-neon neon-glow">Into Elite Strength</span>
         </h1>
 
-        <p className="font-poppins text-white/70 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10 animate-on-scroll stagger-2">
+        <p className="font-poppins text-white/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 animate-on-scroll stagger-2">
           Forge your greatest self inside New York's most advanced fitness facility.
           World-class trainers. Cutting-edge equipment. Relentless results.
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-scroll stagger-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 animate-on-scroll stagger-3">
           <button
             onClick={() => scrollTo('pricing')}
-            className="btn-neon px-8 py-4 rounded-sm text-base w-full sm:w-auto"
+            className="btn-neon px-6 sm:px-8 py-3.5 sm:py-4 rounded-sm text-sm sm:text-base w-full sm:w-auto"
           >
             Join Now — From $29/mo
           </button>
 
           <button
             onClick={() => scrollTo('programs')}
-            className="btn-outline-neon px-8 py-4 rounded-sm text-base w-full sm:w-auto flex items-center justify-center gap-2"
+            className="btn-outline-neon px-6 sm:px-8 py-3.5 sm:py-4 rounded-sm text-sm sm:text-base w-full sm:w-auto flex items-center justify-center gap-2"
           >
             <Play size={16} fill="currentColor" />
             Start Free Trial
@@ -70,7 +70,7 @@ export default function Hero() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-montserrat font-700 text-base px-8 py-4 rounded-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full sm:w-auto"
+            className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-montserrat font-700 text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 rounded-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full sm:w-auto"
           >
             <MessageCircle size={18} />
             Chat on WhatsApp
@@ -78,7 +78,7 @@ export default function Hero() {
         </div>
 
         {/* Stats row */}
-        <div className="flex items-center justify-center gap-8 sm:gap-16 mt-16 animate-on-scroll stagger-4">
+        <div className="grid grid-cols-2 sm:flex sm:items-center sm:justify-center gap-4 sm:gap-8 md:gap-16 mt-12 sm:mt-16 animate-on-scroll stagger-4">
           {[
             { value: '5,000+', label: 'Members' },
             { value: '25+', label: 'Elite Trainers' },
@@ -86,10 +86,10 @@ export default function Hero() {
             { value: '12+', label: 'Years of Excellence' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="font-montserrat font-900 text-2xl sm:text-3xl text-brand-green neon-glow">
+              <div className="font-montserrat font-900 text-xl sm:text-2xl md:text-3xl text-brand-green neon-glow">
                 {stat.value}
               </div>
-              <div className="font-poppins text-xs text-white/50 tracking-wider uppercase mt-0.5">
+              <div className="font-poppins text-[10px] sm:text-xs text-white/50 tracking-wider uppercase mt-0.5">
                 {stat.label}
               </div>
             </div>

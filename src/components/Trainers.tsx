@@ -35,16 +35,16 @@ const trainers = [
 
 export default function Trainers() {
   return (
-    <section id="trainers" className="py-24 bg-brand-black relative overflow-hidden">
+    <section id="trainers" className="py-16 sm:py-24 bg-brand-black relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-80 h-80 bg-brand-green/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <p className="font-poppins text-xs font-500 text-brand-green tracking-[0.3em] uppercase mb-4 animate-on-scroll">
             Meet the Team
           </p>
-          <h2 className="section-title text-4xl sm:text-5xl text-white mb-5 animate-on-scroll stagger-1">
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl text-white mb-5 animate-on-scroll stagger-1">
             Elite <span className="text-neon">Coaches</span>
           </h2>
           <p className="font-poppins text-white/55 max-w-xl mx-auto text-base leading-relaxed animate-on-scroll stagger-2">
@@ -90,12 +90,12 @@ export default function Trainers() {
               </div>
 
               {/* Info */}
-              <div className="mt-5">
-                <h3 className="font-montserrat font-800 text-xl text-white">{trainer.name}</h3>
+              <div className="mt-4 sm:mt-5">
+                <h3 className="font-montserrat font-800 text-lg sm:text-xl text-white">{trainer.name}</h3>
                 <p className="font-poppins text-brand-green text-sm font-500 mt-0.5">{trainer.role}</p>
                 <p className="font-poppins text-white/50 text-xs mt-1">{trainer.specialty}</p>
                 <div className="h-px bg-brand-dark-border my-3" />
-                <p className="font-poppins text-white/55 text-sm leading-relaxed">{trainer.bio}</p>
+                <p className="font-poppins text-white/55 text-xs sm:text-sm leading-relaxed">{trainer.bio}</p>
                 <div className="mt-3 inline-block bg-brand-green/10 border border-brand-green/20 px-3 py-1 rounded-full">
                   <span className="font-poppins text-[10px] text-brand-green">{trainer.cert}</span>
                 </div>
