@@ -77,11 +77,12 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch">
+        {/* Desktop grid / Mobile horizontal scroll */}
+        <div className="flex md:grid md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
           {plans.map((plan, i) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col rounded-sm animate-on-scroll stagger-${i + 1} ${
+              className={`relative flex flex-col rounded-sm animate-on-scroll stagger-${i + 1} min-w-[280px] sm:min-w-[300px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink ${
                 plan.highlighted
                   ? 'bg-brand-dark-card border-2 border-brand-green shadow-neon'
                   : 'card-dark'

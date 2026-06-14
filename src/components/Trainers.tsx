@@ -52,11 +52,12 @@ export default function Trainers() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Desktop grid / Mobile horizontal scroll */}
+        <div className="flex md:grid md:grid-cols-3 gap-6 sm:gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
           {trainers.map((trainer, i) => (
             <div
               key={trainer.name}
-              className={`group relative animate-on-scroll stagger-${i + 1}`}
+              className={`group relative animate-on-scroll stagger-${i + 1} min-w-[260px] sm:min-w-[280px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink`}
             >
               {/* Image container */}
               <div className="relative overflow-hidden rounded-sm aspect-[3/4]">
