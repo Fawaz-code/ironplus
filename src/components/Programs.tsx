@@ -1,4 +1,5 @@
-import { Flame, Heart, Zap, Dumbbell, User, ArrowRight } from 'lucide-react';
+import { Flame, Heart, Zap, Dumbbell, User, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
 
 const programs = [
   {
@@ -57,6 +58,33 @@ export default function Programs() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
+
+  const scrollBy = (dir: 'left' | 'right') => {
+    scrollRef.current?.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
+  };
+
   return (
     <section id="programs" className="py-16 sm:py-24 bg-brand-dark relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -75,12 +103,36 @@ export default function Programs() {
           </p>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Scroll container wrapper */}
+        <div className="relative">
+          {/* Left arrow */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scrollBy('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-brand-dark-card border border-brand-green/40 rounded-full flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-brand-black transition-all duration-200 shadow-lg md:hidden"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          )}
+          {/* Right arrow */}
+          {canScrollRight && (
+            <button
+              onClick={() => scrollBy('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-brand-dark-card border border-brand-green/40 rounded-full flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-brand-black transition-all duration-200 shadow-lg md:hidden"
+            >
+              <ChevronRight size={20} />
+            </button>
+          )}
+
+          {/* Desktop grid / Mobile horizontal scroll */}
+          <div
+            ref={scrollRef}
+            className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+          >
           {programs.map((prog, i) => (
             <div
               key={prog.title}
-              className={`group relative rounded-sm overflow-hidden cursor-pointer animate-on-scroll stagger-${Math.min(i + 1, 5)}`}
+              className={`group relative rounded-sm overflow-hidden cursor-pointer animate-on-scroll stagger-${Math.min(i + 1, 5)} min-w-[280px] sm:min-w-[300px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink`}
               style={{ aspectRatio: i === 4 ? 'auto' : undefined }}
             >
               {/* Image */}
@@ -126,7 +178,8 @@ export default function Programs() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </div>{/* end scroll wrapper */}
       </div>
     </section>
   );
