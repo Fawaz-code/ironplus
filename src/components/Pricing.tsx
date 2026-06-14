@@ -1,4 +1,5 @@
-import { Check, Star, Zap } from 'lucide-react';
+import { Check, Star, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
 
 const plans = [
   {
@@ -58,6 +59,33 @@ const WA_LINK =
   'https://wa.me/923103109222?text=Hi%2C%20I%27m%20interested%20in%20joining%20IronPulse%20Elite%20Fitness.%20Please%20share%20details.';
 
 export default function Pricing() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
+
+  const scrollBy = (dir: 'left' | 'right') => {
+    scrollRef.current?.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
+  };
+
   return (
     <section id="pricing" className="py-16 sm:py-24 bg-brand-dark relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-brand-green/20 to-transparent" />
@@ -77,8 +105,32 @@ export default function Pricing() {
           </p>
         </div>
 
-        {/* Desktop grid / Mobile horizontal scroll */}
-        <div className="flex md:grid md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
+        {/* Scroll container wrapper */}
+        <div className="relative">
+          {/* Left arrow */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scrollBy('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-brand-dark-card border border-brand-green/40 rounded-full flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-brand-black transition-all duration-200 shadow-lg md:hidden"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          )}
+          {/* Right arrow */}
+          {canScrollRight && (
+            <button
+              onClick={() => scrollBy('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-brand-dark-card border border-brand-green/40 rounded-full flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-brand-black transition-all duration-200 shadow-lg md:hidden"
+            >
+              <ChevronRight size={20} />
+            </button>
+          )}
+
+          {/* Desktop grid / Mobile horizontal scroll */}
+          <div
+            ref={scrollRef}
+            className="flex md:grid md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+          >
           {plans.map((plan, i) => (
             <div
               key={plan.name}
@@ -161,7 +213,8 @@ export default function Pricing() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </div>{/* end scroll wrapper */}
 
         <p className="text-center font-poppins text-white/35 text-sm mt-8 animate-on-scroll">
           All memberships include access to the member app, progress tracking, and community challenges.
