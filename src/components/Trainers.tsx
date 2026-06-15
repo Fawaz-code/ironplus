@@ -116,7 +116,9 @@ export default function Trainers() {
                 <img
                   src={trainer.image}
                   alt={trainer.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Gradient overlay always visible */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/30 to-transparent" />
@@ -137,7 +139,7 @@ export default function Trainers() {
                 </div>
 
                 {/* Cert badge */}
-                <div className="absolute top-4 right-4 bg-brand-black/80 backdrop-blur-sm border border-brand-green/30 px-3 py-1 rounded-full">
+                <div className="absolute top-4 right-4 bg-brand-black/80 border border-brand-green/30 px-3 py-1 rounded-full">
                   <span className="font-poppins text-[10px] text-brand-green">{trainer.exp} Exp.</span>
                 </div>
               </div>

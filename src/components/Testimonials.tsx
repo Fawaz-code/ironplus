@@ -97,7 +97,7 @@ export default function Testimonials() {
             {/* Avatar & info */}
             <div className="flex-shrink-0 text-center lg:text-left">
               <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-brand-green/40 mx-auto lg:mx-0">
-                <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
+                <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <div className="mt-3">
                 <div className="font-montserrat font-700 text-white text-base">{t.name}</div>

@@ -78,9 +78,11 @@ export default function About() {
           <div className="relative animate-on-scroll-right">
             <div className="relative rounded-sm overflow-hidden aspect-[4/3] sm:aspect-[4/5]">
               <img
-                src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=600"
                 alt="IronPulse Elite gym interior"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent" />
             </div>

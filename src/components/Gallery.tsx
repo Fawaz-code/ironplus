@@ -2,7 +2,7 @@ import { Maximize2 } from 'lucide-react';
 
 const images = [
   {
-    src: 'https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=800',
+    src: 'https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg?auto=compress&cs=tinysrgb&w=600',
     label: 'Main Training Floor',
     size: 'col-span-2 row-span-2 md:col-span-2 md:row-span-2',
   },
@@ -27,7 +27,7 @@ const images = [
     size: '',
   },
   {
-    src: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=800',
+    src: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=600',
     label: 'Group Fitness Studio',
     size: 'col-span-2 md:col-span-2',
   },
@@ -61,16 +61,18 @@ export default function Gallery() {
                 src={img.src}
                 alt={img.label}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-400">
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <div className="flex items-center justify-between">
                   <span className="font-montserrat font-700 text-sm text-white">{img.label}</span>
                   <Maximize2 size={14} className="text-brand-green" />
                 </div>
               </div>
               {/* Neon border on hover */}
-              <div className="absolute inset-0 border-2 border-brand-green/0 group-hover:border-brand-green/40 rounded-sm transition-all duration-400 pointer-events-none" />
+              <div className="absolute inset-0 border-2 border-brand-green/0 group-hover:border-brand-green/40 rounded-sm transition-colors duration-300 pointer-events-none" />
             </div>
           ))}
         </div>

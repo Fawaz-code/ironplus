@@ -140,11 +140,13 @@ export default function Programs() {
                 <img
                   src={prog.image}
                   alt={prog.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-card via-brand-dark-card/40 to-transparent" />
                 {/* Tag */}
-                <div className="absolute top-4 left-4 bg-brand-green/20 border border-brand-green/40 backdrop-blur-sm px-3 py-1 rounded-full">
+                <div className="absolute top-4 left-4 bg-brand-green/20 border border-brand-green/40 px-3 py-1 rounded-full">
                   <span className="font-montserrat font-700 text-[10px] text-brand-green tracking-widest">
                     {prog.tag}
                   </span>
@@ -152,7 +154,7 @@ export default function Programs() {
               </div>
 
               {/* Body */}
-              <div className="bg-brand-dark-card border border-brand-dark-border border-t-0 p-4 sm:p-5 transition-all duration-300 group-hover:border-brand-green/30">
+              <div className="bg-brand-dark-card border border-brand-dark-border border-t-0 p-4 sm:p-5 transition-colors duration-200 group-hover:border-brand-green/30">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-montserrat font-800 text-lg text-white">{prog.title}</h3>
                   <div className="w-8 h-8 bg-brand-black rounded flex items-center justify-center flex-shrink-0 ml-2">
