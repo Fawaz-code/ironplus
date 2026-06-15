@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="absolute left-0 top-1/4 w-1 h-48 bg-gradient-to-b from-transparent via-brand-green to-transparent opacity-60 hidden lg:block" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-0">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/30 rounded-full px-4 py-1.5 mb-6 animate-on-scroll">
           <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
