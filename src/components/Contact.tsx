@@ -10,10 +10,20 @@ export default function Contact() {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
     setLoading(true);
+
+    const waText = encodeURIComponent(
+      `*New Message from IronPulse Website*\n\n` +
+      `*Name:* ${form.name}\n` +
+      `*Email:* ${form.email}\n\n` +
+      `*Message:*\n${form.message}`
+    );
+    const waUrl = `https://wa.me/923103109222?text=${waText}`;
+
     setTimeout(() => {
       setLoading(false);
       setSent(true);
-    }, 1200);
+      window.open(waUrl, '_blank');
+    }, 800);
   };
 
   return (
