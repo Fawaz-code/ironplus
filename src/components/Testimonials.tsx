@@ -1,4 +1,5 @@
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
 
 const testimonials = [
   {
@@ -46,6 +47,33 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
+
+  const scrollBy = (dir: 'left' | 'right') => {
+    scrollRef.current?.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
+  };
+
   return (
     <section className="py-16 sm:py-24 bg-brand-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(57,255,20,0.04)_0%,_transparent_70%)] pointer-events-none" />
@@ -64,41 +92,66 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={t.name}
-              className={`card-dark rounded-sm p-6 flex flex-col gap-4 relative animate-on-scroll stagger-${Math.min(i + 1, 5)}`}
+        {/* Scroll container wrapper */}
+        <div className="relative">
+          {/* Left arrow — mobile only */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scrollBy('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-brand-dark-card border border-brand-green/40 rounded-full flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-brand-black transition-all duration-200 shadow-lg md:hidden"
             >
-              <Quote size={32} className="text-brand-green/15 absolute top-5 right-5" fill="currentColor" />
+              <ChevronLeft size={20} />
+            </button>
+          )}
+          {/* Right arrow — mobile only */}
+          {canScrollRight && (
+            <button
+              onClick={() => scrollBy('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-brand-dark-card border border-brand-green/40 rounded-full flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-brand-black transition-all duration-200 shadow-lg md:hidden"
+            >
+              <ChevronRight size={20} />
+            </button>
+          )}
 
-              {/* Stars */}
-              <div className="flex gap-1">
-                {Array.from({ length: t.rating }).map((_, si) => (
-                  <Star key={si} size={13} fill="#39FF14" className="text-brand-green" />
-                ))}
-              </div>
+          {/* Mobile: horizontal scroll / Desktop: 3-col grid */}
+          <div
+            ref={scrollRef}
+            className="flex md:grid md:grid-cols-3 gap-5 sm:gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+          >
+            {testimonials.map((t, i) => (
+              <div
+                key={t.name}
+                className={`card-dark rounded-sm p-6 flex flex-col gap-4 relative animate-on-scroll stagger-${Math.min(i + 1, 5)} min-w-[280px] sm:min-w-[300px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink`}
+              >
+                <Quote size={32} className="text-brand-green/15 absolute top-5 right-5" fill="currentColor" />
 
-              {/* Quote text */}
-              <p className="font-poppins text-sm text-white/70 leading-relaxed flex-1">
-                "{t.text}"
-              </p>
+                {/* Stars */}
+                <div className="flex gap-1">
+                  {Array.from({ length: t.rating }).map((_, si) => (
+                    <Star key={si} size={13} fill="#39FF14" className="text-brand-green" />
+                  ))}
+                </div>
 
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-3 border-t border-brand-dark-border">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-brand-green/30 flex-shrink-0"
-                />
-                <div>
-                  <div className="font-montserrat font-700 text-sm text-white">{t.name}</div>
-                  <div className="font-poppins text-xs text-brand-green mt-0.5">{t.role}</div>
+                {/* Quote text */}
+                <p className="font-poppins text-sm text-white/70 leading-relaxed flex-1">
+                  "{t.text}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-3 border-t border-brand-dark-border">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="w-11 h-11 rounded-full object-cover border-2 border-brand-green/30 flex-shrink-0"
+                  />
+                  <div>
+                    <div className="font-montserrat font-700 text-sm text-white">{t.name}</div>
+                    <div className="font-poppins text-xs text-brand-green mt-0.5">{t.role}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
