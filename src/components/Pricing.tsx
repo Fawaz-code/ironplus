@@ -129,7 +129,7 @@ export default function Pricing() {
           {/* Desktop grid / Mobile horizontal scroll */}
           <div
             ref={scrollRef}
-            className="flex md:grid md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0"
+            className="flex md:grid md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-stretch overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 pt-6 md:pt-5"
           >
           {plans.map((plan, i) => (
             <div

@@ -68,6 +68,12 @@ export default function Testimonials() {
 
   return (
     <section className="py-16 sm:py-24 bg-brand-black relative overflow-hidden">
+      {/* Preload all avatars so they're ready when the slider reaches them */}
+      <div className="hidden" aria-hidden="true">
+        {testimonials.map((t) => (
+          <img key={t.name} src={t.avatar} alt="" />
+        ))}
+      </div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(57,255,20,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,7 +103,7 @@ export default function Testimonials() {
             {/* Avatar & info */}
             <div className="flex-shrink-0 text-center lg:text-left">
               <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-brand-green/40 mx-auto lg:mx-0">
-                <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
               </div>
               <div className="mt-3">
                 <div className="font-montserrat font-700 text-white text-base">{t.name}</div>
