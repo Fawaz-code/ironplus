@@ -10,6 +10,7 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import AIChatbot from './components/AIChatbot';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Contact />
       <Footer />
       <WhatsAppButton />
+      <AIChatbot />
     </div>
   );
 }

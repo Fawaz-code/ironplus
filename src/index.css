@@ -221,6 +221,53 @@
   border-bottom: 1px solid rgba(57, 255, 20, 0.1);
 }
 
+/* Chatbot animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #39FF14;
+  border-radius: 2px;
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .animate-on-scroll,
@@ -235,5 +282,10 @@
   }
   .gallery-item img {
     transition: none;
+  }
+  .animate-fadeInUp,
+  .animate-fadeIn,
+  .animate-bounce-slow {
+    animation: none;
   }
 }
