@@ -11,7 +11,7 @@ const GYM_INFO = {
   name: 'IronPulse Elite Fitness',
   phone: '+92 310 310 9222',
   whatsapp: '+92 310 310 9222',
-  address: 'DHA Phase 6, Lahore, Pakistan',
+  address: '245 Madison Ave, New York, NY 10016, USA',
   hours: '5:00 AM – 11:00 PM (Mon–Sat), 8:00 AM – 8:00 PM (Sunday)',
   email: 'info@ironpulse.com',
 };
